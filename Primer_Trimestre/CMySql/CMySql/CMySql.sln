@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMySql", "CMySql\CMySql.csproj", "{F23278CA-7685-44EA-81C5-1B8E26B096E5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F23278CA-7685-44EA-81C5-1B8E26B096E5}.Debug|x86.ActiveCfg = Debug|x86
+		{F23278CA-7685-44EA-81C5-1B8E26B096E5}.Debug|x86.Build.0 = Debug|x86
+		{F23278CA-7685-44EA-81C5-1B8E26B096E5}.Release|x86.ActiveCfg = Release|x86
+		{F23278CA-7685-44EA-81C5-1B8E26B096E5}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+EndGlobal

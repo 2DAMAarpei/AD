@@ -4,3 +4,17 @@
     git clone
     git config --global user.name "2DAMAarpei"
     git config --global user.email "aarpei@alu.iesserpis.org"
+
+20/09/2019
+ Instalación máquina virtual Ubuntu.
+
+23/09/2019
+ Instalación LAMP en máquina virtual.
+ Introducción a PHPMyAdmin.
+
+02/10/2019
+ Creación de pequeño programa con C# para acceder a la base de datos.
+
+04/10/2019
+ Creacción de un biblioteca para facilitar la adición de parametros a IDBCommand.
+
