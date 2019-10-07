@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{4DB50D41-3082-4664-847E-308DD3C9C0F6}</ProjectGuid>
+    <ProjectGuid>{ACFAAE57-DA9C-42E7-A5E9-47B7ECE99E5E}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Ejercicio1AD</RootNamespace>
-    <AssemblyName>Ejercicio1AD</AssemblyName>
+    <RootNamespace>DBCommand_Helper</RootNamespace>
+    <AssemblyName>DBCommand_Helper</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -30,23 +30,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="MySql.Data">
-      <HintPath>..\..\..\..\mysqldata\MySql.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Renci.SshNet">
-      <HintPath>..\..\..\..\mysqldata\Renci.SshNet.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="MySQL_Helper">
-      <HintPath>..\..\..\..\..\..\Projects\MySQL_Helper\MySQL_Helper\bin\Debug\MySQL_Helper.dll</HintPath>
-    </Reference>
-    <Reference Include="CMENU">
-      <HintPath>..\..\..\..\..\..\Projects\CMENU\CMENU\bin\Debug\CMENU.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EmptyClass.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
