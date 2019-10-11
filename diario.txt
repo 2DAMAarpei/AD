@@ -20,3 +20,6 @@
 
 07/10/2019
  CMenu Añadido, Ejercicio1(casi terminado), se ha introducido hoy GTK
+
+11/10/2019
+ Ejercicio1(consultor de Base de datos por terminal) terminado, se empieza proyecto para crear otro  	 consultor pero con interfaz gráfica.

@@ -12,14 +12,30 @@ namespace CMENU
 
         public Menu() { }
 
-        public void renderMenu(){
-            Console.WriteLine("***** "+title+" *****");
+        public void renderMenu() {
+            Console.WriteLine("***** " + title + " *****");
             for (int i = 0; i < row.Count; i++) {
                 Console.WriteLine(i + "- " + row[i]);
             }
             Console.WriteLine("Introduce una opción:");
             option = Console.ReadLine();
-        
+            while (!esNumerico(option)||(Int32.Parse(option)<0) || Int32.Parse(option) >row.Count ){
+                Console.WriteLine("Opción Invalida!!!");
+                Console.WriteLine("Introduce una opción:");
+                option = Console.ReadLine();
+            }
+
+
+        }
+
+        public bool esNumerico(String cadena) {
+            for(int i = 0; i < cadena.Length; i++) {
+                Char aux = cadena[i];
+                if (!Char.IsDigit(aux)) {
+                    return false;
+                }
+            }
+            return true;
 
         }
 

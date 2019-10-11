@@ -23,15 +23,7 @@ namespace Ejercicio1AD
 
             dbConnetion.Open();
             IDbCommand dbCommand = dbConnetion.CreateCommand();
-            if (Int32.Parse(menu.getOption()) > 6) {
-                Console.WriteLine(Int32.Parse(menu.getOption()) + " aaaa");
 
-            }
-            else {
-                Console.WriteLine(Int32.Parse(menu.getOption()) + " bbbbb");
-
-            }
-            //|| !int.TryParse(menu.getOption(),out int result)
             while (Int32.Parse(menu.getOption()) < 6 )
             {
                 switch (Int32.Parse(menu.getOption()))
@@ -101,7 +93,7 @@ namespace Ejercicio1AD
 
         public static void editar(IDbCommand dbCommand){
             Console.WriteLine("Inserta el ID del articulo a modificar");
-            int id = Console.Read();
+            int id = Int32.Parse(Console.ReadLine());
             Console.WriteLine();
 
             MySQL_Helper.DBCommand_Helper.addParameter(dbCommand, "id_prod", id);
@@ -111,12 +103,12 @@ namespace Ejercicio1AD
             MySQL_Helper.DBCommand_Helper.addParameter(dbCommand, "nombre", nombre);
 
             Console.WriteLine("Inserta el id de la nueva categoría: ");
-            int id_cat = Console.Read();
+            int id_cat = Int32.Parse(Console.ReadLine());
             Console.WriteLine();
             MySQL_Helper.DBCommand_Helper.addParameter(dbCommand, "id_cat", id_cat);
 
             Console.WriteLine("Inserta el nuevo precio del articulo: ");
-            float precio = Console.Read();
+            float precio = float.Parse(Console.ReadLine());
             Console.WriteLine();
 
             MySQL_Helper.DBCommand_Helper.addParameter(dbCommand, "precio", precio);
@@ -130,41 +122,61 @@ namespace Ejercicio1AD
 
         public static void borrar(IDbCommand dbCommand){
             Console.WriteLine("Inserta el ID del articulo a borrar");
-            int id = Console.Read();
+            int id = Int32.Parse(Console.ReadLine());
             Console.WriteLine();
 
             MySQL_Helper.DBCommand_Helper.addParameter(dbCommand, "id_prod", id);
 
-            dbCommand.CommandText = String.Format("delete from productos where id_producto=@id_prod");
+            dbCommand.CommandText = String.Format("delete from productos where id_prod=@id_prod");
             dbCommand.ExecuteNonQuery();
             dbCommand.Parameters.Clear();
-
-
         }
 
         public static void consultar(IDbCommand dbCommand){
-            //Menu menu = new Menu();
-            //menu.addOption
-            //Console.WriteLine("Inserta el nombre del nuevo articulo: ");
-            //string nombre = Console.ReadLine();
-            //MySQL_Helper.DBCommand_Helper.addParameter(dbCommand, "nombre", nombre);
+            Console.WriteLine("Inserta el ID del articulo a consultar");
+            int id = Int32.Parse(Console.ReadLine());
+            Console.WriteLine();
 
-            //Console.WriteLine("Inserta el  id de la categoría: ");
-            //string id_cat = Console.ReadLine();
-            //MySQL_Helper.DBCommand_Helper.addParameter(dbCommand, "id_cat", id_cat);
+            MySQL_Helper.DBCommand_Helper.addParameter(dbCommand, "id_prod", id);
 
-            //Console.WriteLine("Inserta el precio del articulo: ");
-            //string precio = Console.ReadLine();
-            //MySQL_Helper.DBCommand_Helper.addParameter(dbCommand, "precio", precio);
+            dbCommand.CommandText = String.Format("select * from productos where id_prod=@id_prod");
 
-            //dbCommand.CommandText = String.Format("insert into productos (nombre,id_categoria,precio) values (@nombre,@id_cat,@precio)");
-            //dbCommand.ExecuteNonQuery();
+            IDataReader reader=dbCommand.ExecuteReader();
+
+            while (reader.Read()) {
+                Console.WriteLine("###########################");
+                Console.WriteLine();
+                Console.WriteLine("ID producto: " + reader[0]);
+                Console.WriteLine("Nombre: " + reader[1]);
+                Console.WriteLine("ID Categoria: " + reader[2]);
+                Console.WriteLine("Precio: " + reader[3]);
+                Console.WriteLine();
+                Console.WriteLine("###########################");
+            }
+            reader.Close();
+            dbCommand.Parameters.Clear();
 
         }
 
         public static void listar(IDbCommand dbCommand){
+        
             dbCommand.CommandText = String.Format("select * from productos");
-            Console.WriteLine(dbCommand.ExecuteNonQuery());
+
+            IDataReader reader = dbCommand.ExecuteReader();
+            Console.WriteLine("//// LISTA PRODUCTOS //// \n");
+            while (reader.Read())
+            {
+                Console.WriteLine("###########################");
+                Console.WriteLine();
+                Console.WriteLine("ID producto: " + reader[0]);
+                Console.WriteLine("Nombre: " + reader[1]);
+                Console.WriteLine("ID Categoria: " + reader[2]);
+                Console.WriteLine("Precio: " + reader[3]);
+                Console.WriteLine();
+                Console.WriteLine("########################### \n");
+            }
+            Console.WriteLine("\n///////////////////// \n");
+            reader.Close();
             dbCommand.Parameters.Clear();
 
 

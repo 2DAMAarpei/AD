@@ -41,7 +41,7 @@
       <HintPath>..\..\..\..\..\..\Projects\MySQL_Helper\MySQL_Helper\bin\Debug\MySQL_Helper.dll</HintPath>
     </Reference>
     <Reference Include="CMENU">
-      <HintPath>..\..\..\..\..\..\Projects\CMENU\CMENU\bin\Debug\CMENU.dll</HintPath>
+      <HintPath>..\..\..\CMENU\CMENU\bin\Debug\CMENU.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
