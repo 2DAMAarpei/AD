@@ -1,7 +1,7 @@
 ﻿using System;
 using Gtk;
 
-namespace CGTK
+namespace CGTK_MySQL
 {
     class MainClass
     {

@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{651FA237-0A00-4BD1-B3E8-82008D622FD1}</ProjectGuid>
+    <ProjectGuid>{B99E4341-172D-499A-8C50-B7D06C24DD22}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>CGTK</RootNamespace>
-    <AssemblyName>CGTK</AssemblyName>
+    <RootNamespace>CGTK_MySQL</RootNamespace>
+    <AssemblyName>CGTK_MySQL</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -52,6 +52,16 @@
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Mono.Posix" />
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\..\mysqldata\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySQL_Helper">
+      <HintPath>..\..\..\..\..\..\Projects\MySQL_Helper\MySQL_Helper\bin\Debug\MySQL_Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="Renci.SshNet">
+      <HintPath>..\..\..\..\mysqldata\Renci.SshNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
@@ -64,6 +74,14 @@
     <Compile Include="gtk-gui\MainWindow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Productos.cs" />
+    <Compile Include="gtk-gui\CGTK_MySQL.Productos.cs" />
+    <Compile Include="Categorias.cs" />
+    <Compile Include="gtk-gui\CGTK_MySQL.Categorias.cs" />
+    <Compile Include="Actions.cs" />
+    <Compile Include="VentanaAcciones.cs" />
+    <Compile Include="gtk-gui\CGTK_MySQL.ventanaAcciones.cs" />
+    <Compile Include="TreeViewHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
