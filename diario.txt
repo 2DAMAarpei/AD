@@ -23,3 +23,6 @@
 
 11/10/2019
  Ejercicio1(consultor de Base de datos por terminal) terminado, se empieza proyecto para crear otro  	 consultor pero con interfaz gráfica.
+
+22/10/2019
+ Proyecto de interfaz con GTK para administrar la base de datos de Categorias-Productos casi finalizado.

@@ -107,6 +107,8 @@ namespace CGTK_MySQL
 			this.DefaultHeight = 509;
 			this.Show();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
+			this.listar.Clicked += new global::System.EventHandler(this.OnListarClicked);
+			this.consultar.Clicked += new global::System.EventHandler(this.OnConsultarClicked);
 			this.atras.Clicked += new global::System.EventHandler(this.OnAtrasClicked);
 		}
 	}

@@ -10,6 +10,12 @@ public partial class MainWindow : Gtk.Window
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
         Build();
+        dbConnetion.Open();
+        foreach(object o in this.AllChildren) {
+            Console.WriteLine(o.ToString());
+        }
+
+
     }
 
     protected void OnDeleteEvent(object sender, DeleteEventArgs a)

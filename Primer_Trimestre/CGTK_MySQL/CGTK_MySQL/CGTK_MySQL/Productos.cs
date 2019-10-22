@@ -6,9 +6,9 @@ namespace CGTK_MySQL
 {
     public partial class Productos : Gtk.Window
     {
-        //private static TreeView treeView = new TreeView();
         private static IDbConnection dbConnection;
         private static List<string> campos = new List<string>() { "id_prod", "id_categoria", "nombre", "precio" };
+
         public Productos(IDbConnection dbCon) : base(Gtk.WindowType.Toplevel)
         {
             this.Build();

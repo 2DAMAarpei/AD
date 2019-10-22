@@ -80,8 +80,8 @@
     <Compile Include="gtk-gui\CGTK_MySQL.Categorias.cs" />
     <Compile Include="Actions.cs" />
     <Compile Include="VentanaAcciones.cs" />
-    <Compile Include="gtk-gui\CGTK_MySQL.ventanaAcciones.cs" />
     <Compile Include="TreeViewHelper.cs" />
+    <Compile Include="gtk-gui\CGTK_MySQL.VentanaAcciones.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
