@@ -6,9 +6,9 @@ namespace CGTK_MySQL
 {
     public class TreeViewHelper
     {
-        public void ConstruirTreeView(List<string> valoresColumna, List<string> campos, TreeView treeView)
+        public void BuildTreeView(List<string> valoresCelda, List<string> campos, TreeView treeView)
         {
-            LimpiarTreeView(treeView);
+            ClearTreeView(treeView);
 
             //Build columns
             for (int i = 0; i < campos.Count; i++)
@@ -29,13 +29,12 @@ namespace CGTK_MySQL
 
             //Put values in cells row by row 
             ListStore valoresCeldas = new ListStore(types);
-            System.Console.Write(valoresColumna.ToString());
-            for (int i = types.Length; i <= valoresColumna.Count; i += types.Length)
+            for (int i = types.Length; i <= valoresCelda.Count; i += types.Length)
             {
                 string[] valoresFila= new string[types.Length];
                 for (int z = types.Length; z > 0; z--)
                 {
-                    valoresFila[i - z]=valoresColumna[i - z];
+                    valoresFila[i - z]= valoresCelda[i - z];
 
                 }
                 valoresCeldas.AppendValues(valoresFila);
@@ -43,7 +42,7 @@ namespace CGTK_MySQL
             treeView.Model = valoresCeldas;
         }
 
-        private void LimpiarTreeView(TreeView treeView)
+        private void ClearTreeView(TreeView treeView)
         {
             //Remove all columns from the TreeView
             foreach (TreeViewColumn treeViewColumn in treeView.Columns)

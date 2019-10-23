@@ -11,9 +11,6 @@ public partial class MainWindow : Gtk.Window
     {
         Build();
         dbConnetion.Open();
-        foreach(object o in this.AllChildren) {
-            Console.WriteLine(o.ToString());
-        }
 
 
     }

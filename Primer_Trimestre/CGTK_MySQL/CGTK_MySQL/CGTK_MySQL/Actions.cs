@@ -6,7 +6,7 @@ namespace CGTK_MySQL
 {
     public class Actions
     {
-        public static void nuevo(IDbCommand dbCommand, ArrayList listaCampos, ArrayList listaValores, string tabla)
+        public static void New(IDbCommand dbCommand, ArrayList listaCampos, ArrayList listaValores, string tabla)
         {
 
             for (int i=0;i<listaValores.Count;i++) {
@@ -47,7 +47,7 @@ namespace CGTK_MySQL
 
         }
 
-        public static void editar(IDbCommand dbCommand, ArrayList listaCampos, ArrayList listaValores, string tabla, string campo,string valorCampo)
+        public static void Edit(IDbCommand dbCommand, ArrayList listaCampos, ArrayList listaValores, string tabla, string campo,string valorCampo)
         {
 
 
@@ -83,7 +83,7 @@ namespace CGTK_MySQL
 
         }
 
-        public static void Borrar(IDbCommand dbCommand,string campo,string valorCampo,string tabla)
+        public static void Delete(IDbCommand dbCommand,string campo,string valorCampo,string tabla)
         {
 
             MySQL_Helper.DBCommand_Helper.addParameter(dbCommand, campo, valorCampo);
@@ -93,7 +93,7 @@ namespace CGTK_MySQL
             dbCommand.Parameters.Clear();
         }
 
-        public static List<string> Consultar(IDbCommand dbCommand,string campo,string valorCampo,string tabla)
+        public static List<string> Consult(IDbCommand dbCommand,string campo,string valorCampo,string tabla)
         {
             List<string> resultado=new List<string>();
 
@@ -118,7 +118,7 @@ namespace CGTK_MySQL
 
         }
 
-        public static List<string> listar(IDbCommand dbCommand, string tabla)
+        public static List<string> List(IDbCommand dbCommand, string tabla)
         {
             List<string> resultado = new List<string>();
 

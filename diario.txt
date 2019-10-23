@@ -26,3 +26,6 @@
 
 22/10/2019
  Proyecto de interfaz con GTK para administrar la base de datos de Categorias-Productos casi finalizado.
+
+23/10/2019
+ CGTK_MySQL actualizado.

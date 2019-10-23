@@ -34,14 +34,23 @@ namespace CGTK_MySQL
         protected void OnListarClicked(object sender, EventArgs e)
         {
             List<string> valoresCampo = new List<string>();
-            valoresCampo = Actions.listar(dbCommand, "categoria");
-            treeViewHelper.ConstruirTreeView(valoresCampo, campos, treeview3);
+            valoresCampo = Actions.List(dbCommand, "categoria");
+            treeViewHelper.BuildTreeView(valoresCampo, campos, treeview3);
         }
 
-        protected void OnConsultarClicked(object sender, EventArgs e)
+        protected void OnConsultarClicked(object send, EventArgs eA)
         {
-            VentanaAcciones ventanaAcciones = new VentanaAcciones("categoria");
+            List<string> entrysText = new List<string>();
+            WindowAction ventanaAcciones = new WindowAction("categoria");
+            ventanaAcciones.Destroyed+=(sender, e) => {
+                entrysText = ventanaAcciones.GetEntrysContent();
+                List<string> valoresCeldas = new List<string>();
+                valoresCeldas = Actions.Consult(dbCommand, campos[0], entrysText[0],"categoria");
+                treeViewHelper.BuildTreeView(valoresCeldas, campos,treeview3);
+
+            };
             ventanaAcciones.Show();
+
         }
     }
 }

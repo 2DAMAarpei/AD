@@ -260,7 +260,7 @@
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="CGTK_MySQL.VentanaAcciones" design-size="400 300">
+  <widget class="Gtk.Window" id="CGTK_MySQL.WindowAction" design-size="400 300">
     <property name="MemberName" />
     <property name="Title" translatable="yes">ventanaAcciones</property>
     <property name="WindowPosition">CenterOnParent</property>

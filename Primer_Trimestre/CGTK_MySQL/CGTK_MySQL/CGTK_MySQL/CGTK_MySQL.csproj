@@ -79,9 +79,9 @@
     <Compile Include="Categorias.cs" />
     <Compile Include="gtk-gui\CGTK_MySQL.Categorias.cs" />
     <Compile Include="Actions.cs" />
-    <Compile Include="VentanaAcciones.cs" />
+    <Compile Include="WindowAction.cs" />
     <Compile Include="TreeViewHelper.cs" />
-    <Compile Include="gtk-gui\CGTK_MySQL.VentanaAcciones.cs" />
+    <Compile Include="gtk-gui\CGTK_MySQL.WindowAction.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

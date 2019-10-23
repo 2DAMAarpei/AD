@@ -4,14 +4,14 @@ using Gtk;
 
 namespace CGTK_MySQL
 {
-    public partial class VentanaAcciones : Gtk.Window
+    public partial class WindowAction : Gtk.Window
     {
         private string source;
-        private List<string> campos;
-        private List<string> valoresCampos;
-
+        private List<string> campos = new List<string>();
+        private List<string> valoresCampos=new List<string>();
+        private List<Entry> allEntrys = new List<Entry>();
         //Constructor Consult
-        public VentanaAcciones(string source) :base(Gtk.WindowType.Toplevel)
+        public WindowAction(string source) :base(Gtk.WindowType.Toplevel)
         {
             this.source = source;
             ConstruyeVentanaConsultar();
@@ -21,7 +21,7 @@ namespace CGTK_MySQL
         }
 
         //Constructor Edit
-        public VentanaAcciones(string source,List<string> campos,List<string> valoresCampos) : base(Gtk.WindowType.Toplevel)
+        public WindowAction(string source,List<string> campos,List<string> valoresCampos) : base(Gtk.WindowType.Toplevel)
         {
             this.source = source;
             this.campos = campos;
@@ -39,7 +39,7 @@ namespace CGTK_MySQL
             Entry entry = new Entry();
             Button button = new Button("Enviar");
             button.Clicked += new EventHandler(Send);
-
+            allEntrys.Add(entry);
             Label label = new Label("ID de "+source+" a consultar");
             vBox.Add(label);
             vBox.Add(entry);
@@ -54,6 +54,7 @@ namespace CGTK_MySQL
                 HBox hBox = new HBox(); 
                 Label label =new Label(campos[i]);
                 Entry entry = new Entry(valoresCampos[i]);
+                allEntrys.Add(entry);
                 hBox.Add(label);
                 hBox.Add(entry);
                 vBox.Add(hBox);
@@ -65,7 +66,14 @@ namespace CGTK_MySQL
             this.Add(vBox);
         }
         private void Send(object obj, EventArgs args) {
-            Console.WriteLine(this.AllChildren);
+            Destroy();
+        }
+        public List<String> GetEntrysContent() {
+            List<String> contentEntrys = new List<string>();
+            foreach (Entry entry in allEntrys) {
+                contentEntrys.Add(entry.Text);
+            }
+            return contentEntrys;
         }
     }
 }
