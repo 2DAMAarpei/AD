@@ -41,7 +41,9 @@ namespace CGTK_MySQL
         protected void OnConsultarClicked(object send, EventArgs eA)
         {
             List<string> entrysText = new List<string>();
-            WindowAction ventanaAcciones = new WindowAction("categoria");
+            List<string> noneuse = new List<string>() {""};
+            List<string> aux = new List<string>() {"id"};
+            WindowAction ventanaAcciones = new WindowAction("categoria",aux,noneuse);
             ventanaAcciones.Destroyed+=(sender, e) => {
                 entrysText = ventanaAcciones.GetEntrysContent();
                 List<string> valoresCeldas = new List<string>();
@@ -51,6 +53,67 @@ namespace CGTK_MySQL
             };
             ventanaAcciones.Show();
 
+        }
+
+        protected void OnEditarClicked(object send, EventArgs eA)
+        {
+            try { 
+                TreeSelection treeSelection = (TreeSelection)treeview3.Selection;
+                treeSelection.GetSelected(out TreeIter iter);
+                List<string> values = new List<string>();
+                for (int i = 0; i < campos.Count; i++)
+                {
+                    Console.WriteLine(treeview3.Model.GetValue(iter, i).ToString());
+                    values.Add(treeview3.Model.GetValue(iter, i).ToString());
+                }
+                List<string> copyCampos = new List<string>(campos);
+                copyCampos.RemoveAt(0);
+                List<string> copyValues = new List<string>(values);
+                copyValues.RemoveAt(0);
+                List<string> entrysText = new List<string>();
+                WindowAction ventanaAcciones = new WindowAction("categoria", copyCampos, copyValues);
+                ventanaAcciones.Destroyed += (sender, e) =>
+                {
+                    entrysText = ventanaAcciones.GetEntrysContent();
+                    Actions.Edit(dbCommand, copyCampos, entrysText, "categoria", "id", values[0]);
+                    List<string> valoresCeldas = new List<string>(Actions.List(dbCommand, "categoria"));
+                    treeViewHelper.BuildTreeView(valoresCeldas, campos, treeview3);
+
+                };
+            }
+           catch(Exception  e ) {
+                Console.WriteLine(e);
+                MessageDialog alert = new MessageDialog(this, DialogFlags.DestroyWithParent, MessageType.Warning, ButtonsType.Ok, "¡SELECCIONE UNA FILA PARA EDITARLA!");
+                alert.Run();
+                alert.Destroy();
+            }
+
+        }
+
+        protected void OnBorrarClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                TreeSelection treeSelection = (TreeSelection)treeview3.Selection;
+                treeSelection.GetSelected(out TreeIter iter);
+                List<string> values = new List<string>();
+                for (int i = 0; i < campos.Count; i++)
+                {
+                    Console.WriteLine(treeview3.Model.GetValue(iter, i).ToString());
+                    values.Add(treeview3.Model.GetValue(iter, i).ToString());
+                }
+                Actions.Delete(dbCommand, campos[0], values[0], "categoria");
+                List<string> valoresCeldas = new List<string>(Actions.List(dbCommand, "categoria"));
+                treeViewHelper.BuildTreeView(valoresCeldas, campos, treeview3);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageDialog alert = new MessageDialog(this, DialogFlags.DestroyWithParent, MessageType.Warning, ButtonsType.Ok, "¡ERROR AL BORRAR!");
+                alert.Run();
+                alert.Destroy();
+            }
         }
     }
 }

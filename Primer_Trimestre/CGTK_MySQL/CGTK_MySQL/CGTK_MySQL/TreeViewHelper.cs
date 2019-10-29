@@ -13,36 +13,48 @@ namespace CGTK_MySQL
             //Build columns
             for (int i = 0; i < campos.Count; i++)
             {
-                TreeViewColumn columna = new TreeViewColumn();
-                columna.Title = campos[i];
-                CellRendererText celdaColumna = new CellRendererText();
-                columna.PackStart(celdaColumna, true);
-                treeView.AppendColumn(columna);
-                columna.AddAttribute(celdaColumna, "text", i);
+                    TreeViewColumn columna = new TreeViewColumn();
+                    columna.Title = campos[i];
+                    CellRendererText celdaColumna = new CellRendererText();
+                    columna.PackStart(celdaColumna, true);
+                    treeView.AppendColumn(columna);
+                    columna.AddAttribute(celdaColumna, "text", i);
             }
 
             //Build an array of Types
             Type[] types = new Type[campos.Count];
-            for (int i=0;i<types.Length;i++) {
+            for (int i = 0; i < types.Length; i++)
+            {
                 types[i] = typeof(string);
             }
 
+
             //Put values in cells row by row 
-            ListStore valoresCeldas = new ListStore(types);
-            for (int i = types.Length; i <= valoresCelda.Count; i += types.Length)
+            try
             {
-                string[] valoresFila= new string[types.Length];
-                for (int z = types.Length; z > 0; z--)
+                ListStore valoresCeldas = new ListStore(types);
+                for (int i = types.Length; i <= valoresCelda.Count; i += types.Length)
                 {
-                    valoresFila[i - z]= valoresCelda[i - z];
+                
+                    string[] valoresFila = new string[valoresCelda.Count];
 
+                    for (int z = types.Length; z > 0; z--)
+                    {
+                        Console.WriteLine("i:" + i + " z: " + z + " ---- " + valoresCelda[i - z]);
+                        valoresFila[i - z] = valoresCelda[i - z];
+
+                    }
+                    valoresCeldas.AppendValues(valoresFila);
                 }
-                valoresCeldas.AppendValues(valoresFila);
-            }
-            treeView.Model = valoresCeldas;
-        }
+                treeView.Model = valoresCeldas;
 
-        private void ClearTreeView(TreeView treeView)
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Values " + e);
+            }
+        }
+    private void ClearTreeView(TreeView treeView)
         {
             //Remove all columns from the TreeView
             foreach (TreeViewColumn treeViewColumn in treeView.Columns)

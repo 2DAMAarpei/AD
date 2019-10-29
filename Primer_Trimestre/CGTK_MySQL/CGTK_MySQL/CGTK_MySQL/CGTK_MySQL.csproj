@@ -82,6 +82,7 @@
     <Compile Include="WindowAction.cs" />
     <Compile Include="TreeViewHelper.cs" />
     <Compile Include="gtk-gui\CGTK_MySQL.WindowAction.cs" />
+    <Compile Include="gtk-gui\CGTK_MySQL.Properties.WindowAlert.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

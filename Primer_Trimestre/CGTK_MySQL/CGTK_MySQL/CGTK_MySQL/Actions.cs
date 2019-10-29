@@ -47,21 +47,21 @@ namespace CGTK_MySQL
 
         }
 
-        public static void Edit(IDbCommand dbCommand, ArrayList listaCampos, ArrayList listaValores, string tabla, string campo,string valorCampo)
+        public static void Edit(IDbCommand dbCommand, List<string> listaCampos, List<string> listaValores, string tabla, string campo,string valorCampo)
         {
-
-
+        
             for (int i = 0; i < listaValores.Count; i++)
             {
                 MySQL_Helper.DBCommand_Helper.addParameter(dbCommand, i.ToString(), listaValores[i]);
             }
-                MySQL_Helper.DBCommand_Helper.addParameter(dbCommand, campo, valorCampo);
+                //MySQL_Helper.DBCommand_Helper.addParameter(dbCommand, campo, valorCampo);
 
             ///////////// ********* Create string for CommandText ****** /////////////
+            System.Console.WriteLine(campo+" "+valorCampo);
             string comando = "update " + tabla + " set ";
             for (int i = 0; i < listaCampos.Count; i++)
             {
-                if (i < listaCampos.Count)
+                if (i < listaCampos.Count-1)
                 {
                     comando += listaCampos[i] + "=@"+i+",";
                 }
@@ -71,11 +71,11 @@ namespace CGTK_MySQL
                 }
 
             }
-            comando += " where "+campo+"=@"+campo;
+            comando += " where "+campo+"="+Int32.Parse(valorCampo);
             ////////////////////////////////////////////////////////////////////////
 
 
-
+            System.Console.WriteLine(comando);
             dbCommand.CommandText = String.Format(comando);
             dbCommand.ExecuteNonQuery();
             dbCommand.Parameters.Clear();

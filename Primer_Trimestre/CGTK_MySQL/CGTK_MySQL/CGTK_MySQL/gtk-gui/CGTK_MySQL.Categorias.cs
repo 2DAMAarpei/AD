@@ -109,6 +109,8 @@ namespace CGTK_MySQL
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 			this.listar.Clicked += new global::System.EventHandler(this.OnListarClicked);
 			this.consultar.Clicked += new global::System.EventHandler(this.OnConsultarClicked);
+			this.editar.Clicked += new global::System.EventHandler(this.OnEditarClicked);
+			this.borrar.Clicked += new global::System.EventHandler(this.OnBorrarClicked);
 			this.atras.Clicked += new global::System.EventHandler(this.OnAtrasClicked);
 		}
 	}

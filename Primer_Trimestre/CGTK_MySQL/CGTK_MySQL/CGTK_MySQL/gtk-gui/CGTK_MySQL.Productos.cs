@@ -8,7 +8,7 @@ namespace CGTK_MySQL
 
 		private global::Gtk.ScrolledWindow GtkScrolledWindow;
 
-		private global::Gtk.TreeView treeview2;
+		private global::Gtk.TreeView treeView;
 
 		private global::Gtk.Button listar;
 
@@ -36,10 +36,10 @@ namespace CGTK_MySQL
 			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
 			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
 			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
-			this.treeview2 = new global::Gtk.TreeView();
-			this.treeview2.CanFocus = true;
-			this.treeview2.Name = "treeview2";
-			this.GtkScrolledWindow.Add(this.treeview2);
+			this.treeView = new global::Gtk.TreeView();
+			this.treeView.CanFocus = true;
+			this.treeView.Name = "treeView";
+			this.GtkScrolledWindow.Add(this.treeView);
 			this.vbox1.Add(this.GtkScrolledWindow);
 			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.GtkScrolledWindow]));
 			w2.Position = 0;
@@ -107,6 +107,10 @@ namespace CGTK_MySQL
 			this.DefaultHeight = 542;
 			this.Show();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
+			this.listar.Clicked += new global::System.EventHandler(this.OnListarClicked);
+			this.consutar.Clicked += new global::System.EventHandler(this.OnConsultarClicked);
+			this.editar.Clicked += new global::System.EventHandler(this.OnEditarClicked);
+			this.borrar.Clicked += new global::System.EventHandler(this.OnBorrarClicked);
 			this.atras.Clicked += new global::System.EventHandler(this.OnAtrasClicked);
 		}
 	}

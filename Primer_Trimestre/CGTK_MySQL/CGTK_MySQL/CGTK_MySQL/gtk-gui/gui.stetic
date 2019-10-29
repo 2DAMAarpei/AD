@@ -81,6 +81,7 @@
             <property name="Type">TextOnly</property>
             <property name="Label" translatable="yes">Listar</property>
             <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnListarClicked" />
           </widget>
           <packing>
             <property name="Position">1</property>
@@ -96,6 +97,7 @@
             <property name="Type">TextOnly</property>
             <property name="Label" translatable="yes">Consultar</property>
             <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnConsultarClicked" />
           </widget>
           <packing>
             <property name="Position">2</property>
@@ -111,6 +113,7 @@
             <property name="Type">TextOnly</property>
             <property name="Label" translatable="yes">Editar</property>
             <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnEditarClicked" />
           </widget>
           <packing>
             <property name="Position">3</property>
@@ -126,6 +129,7 @@
             <property name="Type">TextOnly</property>
             <property name="Label" translatable="yes">Borrar</property>
             <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBorrarClicked" />
           </widget>
           <packing>
             <property name="Position">4</property>
@@ -218,6 +222,7 @@
             <property name="Type">TextOnly</property>
             <property name="Label" translatable="yes">Editar</property>
             <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnEditarClicked" />
           </widget>
           <packing>
             <property name="Position">3</property>
@@ -233,6 +238,7 @@
             <property name="Type">TextOnly</property>
             <property name="Label" translatable="yes">Borrar</property>
             <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBorrarClicked" />
           </widget>
           <packing>
             <property name="Position">4</property>
@@ -263,6 +269,22 @@
   <widget class="Gtk.Window" id="CGTK_MySQL.WindowAction" design-size="400 300">
     <property name="MemberName" />
     <property name="Title" translatable="yes">ventanaAcciones</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <child>
+      <placeholder />
+    </child>
+  </widget>
+  <widget class="Gtk.Window" id="CGTK_MySQL.Properties.WindowAlert" design-size="400 300">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">WindowAlert</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <child>
+      <placeholder />
+    </child>
+  </widget>
+  <widget class="Gtk.Window" id="CGTK_MySQL.Properties.WindowAlert" design-size="400 300">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">WindowAlert</property>
     <property name="WindowPosition">CenterOnParent</property>
     <child>
       <placeholder />
