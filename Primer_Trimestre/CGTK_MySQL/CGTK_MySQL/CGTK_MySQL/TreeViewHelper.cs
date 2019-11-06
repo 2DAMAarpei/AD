@@ -36,12 +36,12 @@ namespace CGTK_MySQL
                 for (int i = types.Length; i <= valoresCelda.Count; i += types.Length)
                 {
                 
-                    string[] valoresFila = new string[valoresCelda.Count];
+                    string[] valoresFila = new string[types.Length];
 
                     for (int z = types.Length; z > 0; z--)
                     {
                         Console.WriteLine("i:" + i + " z: " + z + " ---- " + valoresCelda[i - z]);
-                        valoresFila[i - z] = valoresCelda[i - z];
+                        valoresFila[z - 1] = valoresCelda[i - z];
 
                     }
                     valoresCeldas.AppendValues(valoresFila);
