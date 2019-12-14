@@ -1,39 +1,45 @@
 package Hibernate;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
-@Table(name="productos")
+@Table(name="pedidos")
 public class Pedido {
 	@Id
-	private int id_prod;
+	@GenericGenerator(name="kaugen" , strategy="increment")
+	@GeneratedValue(generator="kaugen")
+	private int idPed;
     @ManyToOne
-    @JoinColumn(name="id_categoria", nullable=false)
-	private Categoria categoria;
-	private float precio;
-	private String nombre;
-	public int getId_prod() {
-		return id_prod;
+    @JoinColumn(name="idCli", nullable=false)
+	private Cliente cliente;
+    private String fecha;
+	public int getIdPed() {
+		return idPed;
 	}
-	public void setId_prod(int id_prod) {
-		this.id_prod = id_prod;
+	public void setIdPed(int idPed) {
+		this.idPed = idPed;
 	}
-
-	public float getPrecio() {
-		return precio;
+	public Cliente getCliente() {
+		return cliente;
 	}
-	public void setPrecio(float precio) {
-		this.precio = precio;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
-	public String getNombre() {
-		return nombre;
+	public String getFecha() {
+		return fecha;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+	@Override
+	public String toString() {
+		return "Pedido [idPed=" + idPed + ", cliente=" + cliente + ", fecha=" + fecha + "]";
 	}
 
 }
-https://stackoverflow.com/questions/3585034/how-to-map-a-composite-key-with-hibernate

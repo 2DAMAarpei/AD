@@ -1,22 +1,26 @@
 package Hibernate;
 
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name="categorias")
-public class Categoria {
+@Table(name="clientes")
+public class Cliente {
 	@Id
 	@GenericGenerator(name="kaugen" , strategy="increment")
 	@GeneratedValue(generator="kaugen")
-	private int idCat;
+	private int idCli;
 	private String nombre;
-	public int getIdCat() {
-		return idCat;
+	public int getIdCli() {
+		return idCli;
 	}
-	public void setIdCat(int idCat) {
-		this.idCat = idCat;
+	public void setIdCli(int idCli) {
+		this.idCli = idCli;
 	}
 	public String getNombre() {
 		return nombre;
@@ -26,7 +30,7 @@ public class Categoria {
 	}
 	@Override
 	public String toString() {
-		return "Categoria [idCat=" + idCat + ", nombre=" + nombre + "]";
+		return "Cliente [idCli=" + idCli + ", nombre=" + nombre + "]";
 	}
 
 }

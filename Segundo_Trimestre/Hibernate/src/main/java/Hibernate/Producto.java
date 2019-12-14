@@ -2,23 +2,38 @@ package Hibernate;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name="productos")
 public class Producto {
 	@Id
-	private int id_prod;
-    @ManyToOne
-    @JoinColumn(name="id_categoria", nullable=false)
+	@GenericGenerator(name="kaugen" , strategy="increment")
+	@GeneratedValue(generator="kaugen")
+	private int idProd;
+    @Override
+	public String toString() {
+		return "Producto [idProd=" + idProd + ", categoria=" + categoria + ", precio=" + precio + ", nombre=" + nombre
+				+ "]";
+	}
+	@ManyToOne
+    @JoinColumn(name="idCat", nullable=false)
 	private Categoria categoria;
 	private float precio;
 	private String nombre;
-	public int getId_prod() {
-		return id_prod;
+	
+	public int getIdProd() {
+		return idProd;
 	}
-	public void setId_prod(int id_prod) {
-		this.id_prod = id_prod;
+	public void setIdProd(int idProd) {
+		this.idProd = idProd;
 	}
-
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 	public float getPrecio() {
 		return precio;
 	}
@@ -31,5 +46,7 @@ public class Producto {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+	
 
 }
