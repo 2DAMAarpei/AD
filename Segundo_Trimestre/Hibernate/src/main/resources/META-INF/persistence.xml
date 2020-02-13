@@ -10,13 +10,12 @@
         </description>
 
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/tienda" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/tienda?createDatabaseIfNotExist=true" />
             <property name="javax.persistence.jdbc.user" value="root" />
             <property name="javax.persistence.jdbc.password" value="sistemas" />
-
             <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.hbm2ddl.auto" value="update"></property>
         </properties>
-
     </persistence-unit>
 
 </persistence>

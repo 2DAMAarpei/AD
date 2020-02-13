@@ -1,4 +1,5 @@
 package Hibernate;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,7 +16,7 @@ public class Pedido {
 	@GenericGenerator(name="kaugen" , strategy="increment")
 	@GeneratedValue(generator="kaugen")
 	private int idPed;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="idCli", nullable=false)
 	private Cliente cliente;
     private String fecha;

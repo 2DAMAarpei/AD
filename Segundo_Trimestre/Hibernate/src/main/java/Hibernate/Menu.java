@@ -12,12 +12,13 @@ import javax.persistence.Persistence;
 import org.hibernate.annotations.GenericGenerator;
 public class Menu {
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("hibernate");
+	private static  boolean finished = false;
 	public static void printMenu() {
 		Scanner tcl=new Scanner(System.in);
 		List<String> respuestas= new ArrayList<String>();
 		
 		String[] tablas= {"categorias","productos","pedidos","clientes","lineasPedido","salir"};
-		String[] options ={"guardar","borrar","listar"};
+		String[] options ={"guardar","borrar","listar","salir"};
 		
 		String[] argsCategoria= {"nombre","categoria"};
 		String[] argsProducto= {"id categoria","nombre","precio","producto"};
@@ -57,13 +58,20 @@ public class Menu {
 				case 2:
 					list(tablas[option]);
 					break;
+				default:
+					finished = true;
+					break;
 			}
 
+		}else {
+			finished = true;
 		}
 		
 	}
 	public static void main(String[] args) {
-		printMenu();
+		while(!finished) {
+			printMenu();
+		}
 		
 	}
 	public static EntityManager getEntityManager() {
