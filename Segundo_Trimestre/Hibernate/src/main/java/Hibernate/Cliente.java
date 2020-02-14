@@ -13,7 +13,6 @@ import org.hibernate.annotations.GenericGenerator;
 public class Cliente {
 	@Id
 	@GenericGenerator(name="kaugen" , strategy="increment")
-	@GeneratedValue(generator="kaugen")
 	private int idCli;
 	private String nombre;
 	public int getIdCli() {
@@ -30,7 +29,7 @@ public class Cliente {
 	}
 	@Override
 	public String toString() {
-		return "Cliente [idCli=" + idCli + ", nombre=" + nombre + "]";
+		return " ID del Cliente --> " + idCli + "\n Nombre --> " + nombre;
 	}
 
 }

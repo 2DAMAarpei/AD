@@ -1,6 +1,5 @@
 package Hibernate;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,7 +14,6 @@ import org.hibernate.annotations.GenericGenerator;
 public class LineasPedido {
 	@Id
 	@GenericGenerator(name="kaugen" , strategy="increment")
-	@GeneratedValue(generator="kaugen")
 	private int idLinea;
     @ManyToOne
     @JoinColumn(name="idPed", nullable=false)
@@ -43,7 +41,7 @@ public class LineasPedido {
 	}
 	@Override
 	public String toString() {
-		return "LineaPedido [idLinea=" + idLinea + ", pedido=" + pedido + ", producto=" + producto + "]";
+		return " ID de la Línea -->" + idLinea + "\n ID del Pedido -->" + pedido.getIdPed() + "\n ID del Producto --> " + producto.getIdProd();
 	}
 
 	

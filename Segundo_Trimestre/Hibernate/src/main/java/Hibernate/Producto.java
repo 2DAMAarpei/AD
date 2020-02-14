@@ -9,12 +9,11 @@ import org.hibernate.annotations.GenericGenerator;
 public class Producto {
 	@Id
 	@GenericGenerator(name="kaugen" , strategy="increment")
-	@GeneratedValue(generator="kaugen")
 	private int idProd;
     @Override
 	public String toString() {
-		return "Producto [idProd=" + idProd + ", categoria=" + categoria + ", precio=" + precio + ", nombre=" + nombre
-				+ "]";
+
+		return " ID del Producto --> " + idProd + "\n ID de la Categoria --> " + categoria.getIdCat() + " \n Precio --> " + precio + "\n Nombre --> " + nombre;
 	}
 	@ManyToOne
     @JoinColumn(name="idCat", nullable=false)

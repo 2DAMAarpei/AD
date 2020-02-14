@@ -40,9 +40,10 @@ namespace CGTK_MySQL
 
                     for (int z = types.Length; z > 0; z--)
                     {
-                        Console.WriteLine("i:" + i + " z: " + z + " ---- " + valoresCelda[i - z]);
+
                         valoresFila[z - 1] = valoresCelda[i - z];
 
+                        Console.WriteLine(valoresFila[z - 1]);
                     }
                     valoresCeldas.AppendValues(valoresFila);
                 }

@@ -11,14 +11,13 @@ import javax.persistence.Persistence;
 
 import org.hibernate.annotations.GenericGenerator;
 public class Menu {
-	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("hibernate");
-	private static  boolean finished = false;
+	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("Hibernate");
 	public static void printMenu() {
 		Scanner tcl=new Scanner(System.in);
 		List<String> respuestas= new ArrayList<String>();
 		
 		String[] tablas= {"categorias","productos","pedidos","clientes","lineasPedido","salir"};
-		String[] options ={"guardar","borrar","listar","salir"};
+		String[] options ={"guardar","borrar","listar"};
 		
 		String[] argsCategoria= {"nombre","categoria"};
 		String[] argsProducto= {"id categoria","nombre","precio","producto"};
@@ -27,51 +26,53 @@ public class Menu {
 		String[] argsLineasPedidos= {"id pedido","id producto","lineasPedido"};
 		
 		String[][] allArgsArrays= {argsCategoria,argsProducto,argsPedidos,argsClientes,argsLineasPedidos};
-		System.out.println("Sobre que tabla quieres realizar la acción: ");
+		
 		int option=0;
-		for(int i=0;i<tablas.length;i++) {
-			System.out.println("\t"+i+"- "+tablas[i]);
-		}
-		option=tcl.nextInt();
-		if(option!=tablas.length-1) {
-			int action=0;
-			System.out.println("Introduce la acción que quieres realizar:");
-			for(int i=0;i<options.length;i++) {
-				System.out.println("\t"+i+"- "+options[i]);
+		
+		while(option!=5) {
+			System.out.println("Sobre que tabla quieres realizar la acción: ");
+			for(int i=0;i<tablas.length;i++) {
+				System.out.println("\t"+i+"- "+tablas[i]);
 			}
-			action=tcl.nextInt();
-			switch(action) {
-				case 0:
-					tcl.nextLine();
-					for(int i=0; i<allArgsArrays[option].length-1;i++) {
-						System.out.println("Introduce "+allArgsArrays[option][i]+" para "+allArgsArrays[option][allArgsArrays[option].length-1]+" :");
-						respuestas.add(tcl.nextLine());
-					}
-					respuestas.add(Integer.toString(option));
-					save(respuestas);
-					break;
-				case 1:
-					System.out.println("Introduce el id de la fila a borrar:");
-					int id=tcl.nextInt();
-					delete(tablas[option],id);
-					break;
-				case 2:
-					list(tablas[option]);
-					break;
-				default:
-					finished = true;
-					break;
-			}
+			option=tcl.nextInt();
+			if(option!=tablas.length-1) {
+				int action=0;
+				System.out.println("Introduce la acción que quieres realizar:");
+				for(int i=0;i<options.length;i++) {
+					System.out.println("\t"+i+"- "+options[i]);
+				}
+				action=tcl.nextInt();
+				switch(action) {
+					case 0:
+						tcl.nextLine();
+						for(int i=0; i<allArgsArrays[option].length-1;i++) {
+							System.out.println("Introduce "+allArgsArrays[option][i]+" para "+allArgsArrays[option][allArgsArrays[option].length-1]+" :");
+							respuestas.add(tcl.nextLine());
+						}
+						respuestas.add(Integer.toString(option));
+						save(respuestas);
+						break;
+					case 1:
+						System.out.println("Introduce el id de la fila a borrar:");
+						int id=tcl.nextInt();
+						delete(tablas[option],id);
+						break;
+					case 2:
+						list(tablas[option]);
+						break;
+					default:
+						System.out.println("La opción no existe");
+						break;
+				}
 
-		}else {
-			finished = true;
+			}
 		}
+
 		
 	}
+
 	public static void main(String[] args) {
-		while(!finished) {
-			printMenu();
-		}
+		printMenu();
 		
 	}
 	public static EntityManager getEntityManager() {
@@ -140,7 +141,7 @@ public class Menu {
 				
 			    EntityManager em =getEntityManager();
 			    em.getTransaction().begin();
-			    em.remove(em.find(target.newInstance().getClass(), new Integer(id)));
+			    em.remove(em.find(target.getClass(), new Integer(id)));
 			    em.getTransaction().commit();
 		    }catch(Exception e) {
 		    	System.out.println("No se puede borrar la fila ya que depende más datos de esta!");
@@ -157,14 +158,11 @@ public class Menu {
 	    	parsedTabla+=tabla.substring(1,tabla.length());
 	    List<?> resultados = em.createQuery("from "+parsedTabla).getResultList();
 	    for (Object object : resultados) {
+			System.out.println("##### "+tabla.toUpperCase()+" #####");
 			System.out.println(object.toString());
+			System.out.println("##########");
 		}
-	    try {
-		    Class c =Class.forName("Hibernate.Categoria");
-		    System.out.println(c.newInstance().getClass());
-	    }catch(Exception e) {
-	    	e.printStackTrace();
-	    }
+
 
 	}
 

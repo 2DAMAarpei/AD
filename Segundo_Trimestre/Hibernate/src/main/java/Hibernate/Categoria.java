@@ -9,7 +9,6 @@ import org.hibernate.annotations.GenericGenerator;
 public class Categoria {
 	@Id
 	@GenericGenerator(name="kaugen" , strategy="increment")
-	@GeneratedValue(generator="kaugen")
 	private int idCat;
 	private String nombre;
 	public int getIdCat() {
@@ -26,7 +25,7 @@ public class Categoria {
 	}
 	@Override
 	public String toString() {
-		return "Categoria [idCat=" + idCat + ", nombre=" + nombre + "]";
+		return " ID de la Categoria --> " + idCat + "\n Nombre --> " + nombre;
 	}
 
 }
