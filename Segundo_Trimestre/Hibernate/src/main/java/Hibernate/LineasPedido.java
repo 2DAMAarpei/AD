@@ -17,10 +17,10 @@ public class LineasPedido {
 	@GenericGenerator(name="kaugen" , strategy="increment")
 	@GeneratedValue(generator="kaugen")
 	private int idLinea;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="idPed", nullable=false)
 	private Pedido pedido;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="idProd", nullable=false)
 	private Producto producto;
 	public int getIdLinea() {

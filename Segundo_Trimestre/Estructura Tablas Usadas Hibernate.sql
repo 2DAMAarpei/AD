@@ -1,3 +1,5 @@
+create database tienda;
+use tienda;
 create table categorias(
 	idCat int NOT NULL AUTO_INCREMENT,
 	nombre VARCHAR(20) NOT NULL,
@@ -10,7 +12,7 @@ create table productos(
 	nombre VARCHAR(20) NOT NULL,
 	precio float NOT NULL, 
 	PRIMARY KEY(idProd),
-	FOREIGN KEY (idCat) REFERENCES categorias(idCat)
+	FOREIGN KEY (idCat) REFERENCES categorias(idCat) ON DELETE CASCADE
 );
 
 create table clientes(
@@ -24,7 +26,7 @@ create table pedidos(
 	idCli int NOT NULL,
 	fecha date NOT NULL, 
 	PRIMARY KEY(idPed),
-	FOREIGN KEY (idCli) REFERENCES clientes(idCli)
+	FOREIGN KEY (idCli) REFERENCES clientes(idCli) ON DELETE CASCADE
 );
 
 create table lineasPedido(
@@ -32,8 +34,8 @@ create table lineasPedido(
 	idPed int NOT NULL,
 	idProd int NOT NULL,
 	PRIMARY KEY(idLinea),
-	FOREIGN KEY (idPed) REFERENCES pedidos(idPed),
-	FOREIGN KEY (idProd) REFERENCES productos(idProd)
+	FOREIGN KEY (idPed) REFERENCES pedidos(idPed) ON DELETE CASCADE,
+	FOREIGN KEY (idProd) REFERENCES productos(idProd) ON DELETE CASCADE
 );
 
 ### VALUES ###

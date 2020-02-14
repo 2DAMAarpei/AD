@@ -16,7 +16,7 @@ public class Pedido {
 	@GenericGenerator(name="kaugen" , strategy="increment")
 	@GeneratedValue(generator="kaugen")
 	private int idPed;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="idCli", nullable=false)
 	private Cliente cliente;
     private String fecha;
